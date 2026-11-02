@@ -49,7 +49,7 @@ p{margin:0}.btn{min-height:52px;padding:0 26px;border:0;border-radius:32px;backg
 #zm,#sec{position:absolute;inset:0;background:#2a0f17ee;z-index:50;display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;color:#fff;text-align:center}
 #zm img{max-width:88%;max-height:60%;border:8px solid #fff;border-bottom-width:30px}#zm p,#sec p{font:400 30px 'Great Vibes',cursive}
 .dark-bg{position:absolute;inset:0;background:#111;z-index:1;pointer-events:none;opacity:0.85;transition:opacity 0.1s}
-#s2 > *:not(.dark-bg){position:relative;z-index:2}
+#s1 > *:not(.dark-bg), #s2 > *:not(.dark-bg){position:relative;z-index:2}
 #h7{position:relative;z-index:10;}
 .falling-heart{position:fixed;top:-20px;z-index:0;pointer-events:none;opacity:0.6}
 #quiz,#gift{position:absolute;inset:0;background:rgba(42,15,23,0.95);z-index:100;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;color:#fff}
@@ -64,7 +64,7 @@ p{margin:0}.btn{min-height:52px;padding:0 26px;border:0;border-radius:32px;backg
 </style></head><body><div id="app">
 <div id="top"><div id="dots"><i class="a"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span id="lb">1/8</span><button id="mu">🔊</button></div>
 
-<section class="sc on" id="s1"><div class="g"><h1>Buat Selvi Cahya Lestari...</h1><p>ada surat spesial buatmu nich 💌</p></div>
+<section class="sc on" id="s1"><div class="dark-bg"></div><div class="g"><h1>Buat Selvi Cahya Lestari...</h1><p>ada surat spesial buatmu nich 💌</p></div>
 <div style="animation:fl 3s ease-in-out infinite;margin:20px 0"><div class="env" id="env"><div class="flap"></div><div class="hp">🫰</div><div class="envb"></div></div></div>
 <button class="btn" id="open">Wajib Buka Suratnya 💖</button></section>
 
@@ -332,7 +332,7 @@ window.checkQ=(btn,isCorrect)=>{
 $('#b3').onclick=()=>window.open('https://wa.me/?text='+encodeURIComponent('Makasih ya aa ku tercayank yang tamvan, baik hati, penyayang, penyabar, tidak sombong, rajin menabung, tidak cuka macem², dan pastinya tidack nackall, aku cayank banget sama kamuhhhh. Love you! 💖'),'_blank');
 
 setInterval(()=>{
-  if(document.hidden) return;
+  if(document.hidden || cur < 2) return;
   let h = document.createElement('div');
   h.className='falling-heart';
   h.textContent = Math.random()>0.5?'💖':'✨';
