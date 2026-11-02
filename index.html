@@ -84,7 +84,7 @@ p{margin:0}.btn{min-height:52px;padding:0 26px;border:0;border-radius:32px;backg
 <p id="cap" style="font-weight:600">Tap pipinya, coba deh 👆</p>
 <div class="row"><button class="btn sm" id="f1">Kacamataan</button><button class="btn sm" id="f2">👀 Belo</button><button class="btn sm" id="f3">😊 Blush Pipi</button></div></section>
 
-<section class="sc" id="s6"><div class="pl" style="left:6%;top:70px"><div data-im="min"></div></div><div class="pl" style="right:6%;top:96px"><div data-im="dud"></div></div>
+<section class="sc" id="s6"><div class="pl" style="left:6%;top:70px"><div data-im="foto7"></div></div><div class="pl" style="right:6%;top:96px"><div data-im="foto8"></div></div>
 <h2 style="margin-top:50px">Toples Harapan 🫙</h2><div class="jar" id="jar"><div class="lid"></div><div id="jin"></div></div>
 <p id="t6" style="font-weight:600">Tap kartu, kirim harapan ke toples</p><div class="wg" id="wg"></div></section>
 
@@ -92,7 +92,7 @@ p{margin:0}.btn{min-height:52px;padding:0 26px;border:0;border-radius:32px;backg
 <div class="env" id="e7"><div class="flap"></div><div class="envb"></div></div><p id="t7" style="font-weight:600">Swipe ke atas ↑ untuk membuka</p>
 <div class="paper" id="paper">
 <div class="pp" style="display:block">Sayangku, makasih ya sayang udah hadir nemenin aa, udah selalu ada disaat suka dan dukanya aa, selalu perhatian ke aa, selalu percaya kalo aa bisa, selalu semangatin aa, walaupun sebenernya kamu pun butuh juga. makasih ya baby udah jadi wanita spesial aa, kita terus sama sama ya sayang sampai kita pulang ke 1 rumah yang sama 💖</div>
-<div class="pp">Tapi jujur ya beb, di umur 23 ini kamu udh keliatan dewasa... kayanya 🤭🤭. walaupun sering tantrum ambekan gajelas tbtb, tp walaupun gitu aku paham kalo kamu itu cuma butuh di peyuk , dipeyuk manja.<img data-im="pel"><small>Bukti umur 23 tapi masih suka bobok manjahh 😆</small></div>
+<div class="pp">Tapi jujur ya beb, di umur 23 ini kamu udh keliatan dewasa... kayanya 🤭🤭. walaupun sering tantrum ambekan gajelas tbtb, tp walaupun gitu aku paham kalo kamu itu cuma butuh di peyuk , dipeyuk manja.<img data-im="foto9"><small>Bukti umur 23 tapi masih suka bobok manjahh 😆</small></div>
 <div class="pp">Doa aku buat kamu, semoga kamu selalu diberi kesehatan, diberi perlindungan, semoga apa yang kamu cita²kan dan kamu impi²kan tercapai ya sayangku, aku juga ingin kamu lakuin sesuatu yang menurut kamu itu baik, aku selalu dukung kamu beb tenang aja, 100% aku selalu support kamu dengan apapun yang kamu lakuin selama itu baik buat kamu dan buat kita sayang. Aku sayang kamu banget beb, sayang banget. 💕<br>~ aa mu yang tamvan baik hati</div>
 <div style="text-align:center"><button class="btn" id="rd" style="font-size:15px">Lanjut baca...</button></div></div></section>
 
@@ -107,18 +107,18 @@ p{margin:0}.btn{min-height:52px;padding:0 26px;border:0;border-radius:32px;backg
 <script>
 // DAFTAR FOTO BARU (Nama file harus sama dengan yang diupload ke GitHub)
 const IM={
-  "foto12": "foto12.jpg",
-  "rock": "foto1.jpg",
-  "dek": "foto2.jpg",
-  "sha": "foto3.jpg",
-  "p1": "foto4.jpg",
-  "p2": "foto5.jpg",
-  "sel3": "foto6.jpg",
-  "min": "foto7.jpg",
-  "dud": "foto8.jpg",
-  "pel": "foto9.jpg",
+  "foto1": "foto1.jpg",
+  "foto2": "foto2.jpg",
+  "foto3": "foto3.jpg",
+  "foto4": "foto4.jpg",
+  "foto5": "foto5.jpg",
+  "foto6": "foto6.jpg",
+  "foto7": "foto7.jpg",
+  "foto8": "foto8.jpg",
+  "foto9": "foto9.jpg",
   "foto10": "foto10.jpg",
-  "foto11": "foto11.jpg"
+  "foto11": "foto11.jpg",
+  "foto12": "foto12.jpg"
 };
 
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],nx=$('#nx');
@@ -149,9 +149,21 @@ let on=true;
 const bgm = new Audio('lagu.mp3'); 
 bgm.loop = true;
 bgm.volume = 0.6; 
-function music(){ bgm.play().catch(e => console.log("Autoplay dicegah browser")); }
-document.addEventListener('pointerdown',music,{once:true});
+bgm.addEventListener('error', () => {
+    console.log("Error memuat lagu. Pastikan nama file 'lagu.mp3' benar dan ada di folder yang sama.");
+});
+function playAudio() {
+    if(!on) return;
+    if (bgm.paused) {
+        bgm.play().catch(e => console.log("Browser memblokir audio, butuh interaksi user."));
+    }
+}
+// Memutar lagu setiap kali layar disentuh (jika belum diputar)
+document.addEventListener('click', playAudio);
+document.addEventListener('touchstart', playAudio);
+
 $('#mu').onclick=e=>{
+    e.stopPropagation(); // Mencegah bentrok dengan event di atas
     on=!on;
     if(on) { bgm.play(); } else { bgm.pause(); }
     e.target.textContent=on?'🔊':'🔇';
@@ -177,7 +189,7 @@ init[1]=()=>gsap.to('.fl',{scaleY:1.25,scaleX:.85,repeat:-1,yoyo:true,duration:.
 let hd=false,pg=0,bl=false;const hb=$('#hold');hb.onpointerdown=()=>hd=true;['pointerup','pointerleave','pointercancel'].forEach(e=>hb.addEventListener(e,()=>hd=false));
 setInterval(()=>{if(bl||cur!=1)return;pg=Math.max(0,Math.min(1,pg+(hd?.035:-.04)));$('#bar i').style.width=pg*100+'%';gsap.set('.fl',{opacity:1-pg*.5});if(pg>=1){bl=true;gsap.to('.fl',{opacity:0,scale:0,duration:.4});big();$('#t2').textContent='Make a wish, cantikku ✨';hb.style.display='none';unlock()}},50);
 // 3
-const CP=[['rock','Gaya metal tapi hati hello kitty 🤘'],['dek','Muka deket tapi tetap cantik'],['sha','Bayangan aja udah romantis apalagi aslinya']];
+const CP=[['foto1','First date jalan kaki, tapi tetep happy soalnya sama my baby gurl 🤭🤭'],['foto2','lutuuu kek kue putuu 😙'],['foto3','Cukup bayangan kita aja ya yang bayang²in pikiyan kamuhh, gaboyeh maca lalu yg bayang²in pikiyan you']];
 $('#sw').innerHTML=CP.map(c=>`<div class="cd"><div class="in"><div class="fc"><img src="${IM[c[0]]}"></div><div class="bk">${c[1]}</div></div></div>`).join('');
 $$('.cd').forEach(c=>c.onclick=()=>c.classList.toggle('f'));init[2]=()=>setTimeout(unlock,1200);
 // 4
@@ -193,8 +205,8 @@ function setPh(k,s,p){ph.style.backgroundImage=`url(${IM[k]})`;ph.style.backgrou
 const rs=()=>{bg=false;gsap.to(ph,{scale:1,duration:.4})};
 init[4]=()=>{setPh('foto11','cover','center');unlock()};
 const spk=(x,y,em)=>{for(let i=0;i<12;i++){const s=document.createElement('span');s.className='pt';s.textContent=em[i%em.length];s.style.left=x+'px';s.style.top=y+'px';$('#stage').appendChild(s);const a=i/12*6.28;gsap.to(s,{x:Math.cos(a)*90,y:Math.sin(a)*90,opacity:0,duration:.8,onComplete:()=>s.remove()})}};
-$('#f1').onclick=()=>{rs();setPh('p1','cover','50% 25%');$('#cap').textContent='Pake kacamata makin gemes! 🕶️';spk(150,150,['✨','🤓'])};
-$('#f2').onclick=()=>{setPh('p2','cover','50% 25%');bg=!bg;gsap.to(ph,{scale:bg?1.45:1,duration:.6,ease:'elastic.out(1,.5)'});$('#cap').textContent=bg?'Mata besar mode ON 👀':'Mata normal lagi'};
+$('#f1').onclick=()=>{rs();setPh('foto4','cover','50% 25%');$('#cap').textContent='Pake kacamata makin gemes! 🕶️';spk(150,150,['✨','🤓'])};
+$('#f2').onclick=()=>{setPh('foto6','cover','50% 25%');bg=!bg;gsap.to(ph,{scale:bg?1.45:1,duration:.6,ease:'elastic.out(1,.5)'});$('#cap').textContent=bg?'Mata besar mode ON 👀':'Mata normal lagi'};
 $('#f3').onclick=()=>{bs=!bs;gsap.to('#bl',{opacity:bs?1:0,duration:.5});$('#cap').textContent=bs?'Pipi merah merona 😊':'Blush dihapus'};
 $('#cr').onclick=e=>{const r=$('#stage').getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;gsap.fromTo(ph,{scaleX:1.12,scaleY:.9},{scaleX:bg?1.45:1,scaleY:bg?1.45:1,duration:.7,ease:'elastic.out(1,.4)'});
 const t=document.createElement('b');t.className='pow';t.textContent='POW! pipi cubby 💥';t.style.left=x+'px';t.style.top=y+'px';$('#stage').appendChild(t);gsap.set(t,{xPercent:-50,yPercent:-50});gsap.fromTo(t,{scale:.2},{scale:1.2,y:-40,duration:.5,ease:'back.out(3)'});gsap.to(t,{opacity:0,delay:.8,duration:.3,onComplete:()=>t.remove()});spk(x,y,['❤️','💖','✨'])};
@@ -226,7 +238,7 @@ o7 = function(){
 }
 $('#rd').onclick=()=>{const p=$$('.pp')[++pi];p.style.display='block';gsap.from(p,{opacity:0,y:20,duration:.6});$('#paper').scrollTo({top:9999,behavior:'smooth'});if(pi==2){$('#rd').style.display='none';big();unlock()}};
 // 8
-const CAP=[['rock','Foto resmi pertama ngedate'],['dek','Deket kamu mayu², kalo jauh mau²'],['sha','Bayangan kita aja serasi 🌙'],['sel3','Senyum yang jadi alasan aku betah'],['p1','Pipi gemes, siap dicubit 🥹'],['p2','Versi kedua, tetap gemezz'],['min','Minum dulu, biar makin kuat gemesnya'],['dud','Duduk santai kek dipantai beb'],['pel','Bocil 23 tahun, bobok manja 😆']];let sh=0;
+const CAP=[['foto1','Foto resmi pertama ngedate'],['foto2','Deket kamu mayu², kalo jauh mau²'],['foto3','Bayangan kita aja serasi 🌙'],['foto6','Senyum yang jadi alasan aku betah'],['foto4','Pipi gemes, siap dicubit 🥹'],['foto5','Versi kedua, tetap gemezz'],['foto7','Minum dulu, biar makin kuat gemesnya'],['foto8','Duduk santai kek dipantai beb'],['foto9','Bocil 23 tahun, bobok manja 😆']];let sh=0;
 $('#grid').innerHTML=CAP.map((c,i)=>`<figure class="po" style="margin:-4px;--r:${(Math.random()*14-7).toFixed(1)}deg"><img data-k="${i}" src="${IM[c[0]]}"></figure>`).join('');
 $$('.po').forEach((f,i)=>f.onclick=()=>{if(i==2&&++sh==3){sh=0;$('#sec').style.display='flex';big();return}$('#zi').src=IM[CAP[i][0]];$('#zc').textContent=CAP[i][1];$('#zm').style.display='flex';gsap.from('#zi',{scale:.5,duration:.4,ease:'back.out(1.6)'})});
 $('#zm').onclick=()=>$('#zm').style.display='none';$('#sec').onclick=()=>$('#sec').style.display='none';
