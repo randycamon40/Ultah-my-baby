@@ -2,7 +2,7 @@
 <html lang="id"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#14071a">
-<title>Happy 23th Selvi 💖</title>
+<title>Surat Cinta untuk Selvi 💖</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,500;1,600&family=Figtree:wght@400;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.6.0/confetti.browser.min.js"></script>
@@ -81,7 +81,10 @@ h1,h2{font-family:Fraunces,serif;font-style:italic;font-weight:500;margin:0;font
 /* s7 */
 #e7{touch-action:none}
 .paper{width:100%;max-height:100%;overflow-y:auto;background:linear-gradient(180deg,#fbefe0,#f4dfc8);color:#4a1330;border-radius:22px;border:2px solid var(--gold);padding:22px;font:600 23px/1.38 Caveat,cursive;text-align:left;display:none;box-shadow:0 24px 60px rgba(0,0,0,.6)}
-.pp{display:none;margin-bottom:14px;white-space:pre-line}.pp img{width:100%;height:150px;object-fit:cover;border-radius:12px;margin-top:8px;border:3px solid #fff;display:block}.pp small{font:italic 12px Figtree;display:block;text-align:center;margin-top:4px;color:#7a4a5e}
+.pp{display:none;margin-bottom:14px;white-space:pre-line}.pp img{width:100%;height:180px;object-fit:cover;border-radius:12px;margin-top:15px;border:4px solid #fff;box-shadow:0 12px 28px rgba(255,107,139,0.5);display:block;transform:rotate(-2deg);transition:transform 0.3s}
+.pp img:active{transform:scale(1.05) rotate(0deg);box-shadow:0 15px 35px rgba(255,107,139,0.7)}
+.cue-arrow{display:inline-block;background:linear-gradient(135deg,#ff6b8b,#e11d48);color:#fff;padding:8px 18px;border-radius:20px;font:700 14px Figtree,sans-serif;margin:20px auto 10px;box-shadow:0 8px 20px rgba(225,29,72,0.4);animation:bounce 1.5s infinite}
+@keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-10px)}60%{transform:translateY(-5px)}}.pp small{font:italic 12px Figtree;display:block;text-align:center;margin-top:4px;color:#7a4a5e}
 /* s8 */
 #s8{justify-content:flex-start;overflow-y:auto;padding-top:64px}
 #s8 h1{font-size:30px}
@@ -144,10 +147,9 @@ h1,h2{font-family:Fraunces,serif;font-style:italic;font-weight:500;margin:0;font
 <div class="env" id="e7"><div class="flap"></div><div class="envb"></div></div><p id="t7" class="sub">Swipe ke atas ↑ (atau tap) untuk membuka</p>
 <div class="paper" id="paper">
 <div class="pp" style="display:block"><span class="tx">Sayangku, makasih ya sayang udah hadir nemenin aa, udah selalu ada disaat suka dan dukanya aa, selalu perhatian ke aa, selalu percaya kalo aa bisa, selalu semangatin aa, walaupun sebenernya kamu pun butuh juga. makasih ya baby udah jadi wanita spesial aa, kita terus sama sama ya sayang sampai kita pulang ke 1 rumah yang sama 💖</span></div>
-<div class="pp"><span class="tx">Tapi jujur ya beb, di umur 23 ini kamu udh keliatan dewasa... kayanya 🤭🤭. walaupun sering tantrum ambekan gajelas tbtb, tp walaupun gitu aku paham kalo kamu itu cuma butuh di peyuk , dipeyuk manja.
-↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
-
-</span><img data-im="foto9"><small>Bukti umur 23 tapi masih suka bobok manjahh 😆</small></div>
+<div class="pp"><span class="tx">Tapi jujur ya beb, di umur 23 ini kamu udh keliatan dewasa... kayanya 🤭🤭. walaupun sering tantrum ambekan gajelas tbtb, tp walaupun gitu aku paham kalo kamu itu cuma butuh di peyuk , dipeyuk manja.</span>
+<div style="text-align:center"><span class="cue-arrow">Scroll ke bawah, buktinya nih! 👇</span></div>
+<img data-im="foto9"><small>Bukti umur 23 tapi masih suka bobok manjahh 😆</small></div>
 <div class="pp"><span class="tx">Doa aku buat kamu, semoga kamu selalu diberi kesehatan, diberi perlindungan, semoga apa yang kamu cita²kan dan kamu impi²kan tercapai ya sayangku, aku juga ingin kamu lakuin sesuatu yang menurut kamu itu baik, aku selalu dukung kamu beb tenang aja, 100% aku selalu support kamu dengan apapun yang kamu lakuin selama itu baik buat kamu dan buat kita sayang. Aku sayang kamu banget beb, sayang banget. 💕
 ~ aa mu yang tamvan baik hati</span></div>
 <div style="text-align:center"><button class="btn" id="rd" style="font-size:15px">Lanjut baca...</button></div></div></section>
@@ -217,7 +219,14 @@ $('#sw').innerHTML=CP.map(c=>`<div class="cd"><div class="in"><div class="fc"><i
 $$('.cd').forEach(c=>c.onclick=()=>c.classList.toggle('f'));init[2]=()=>setTimeout(unlock,1200);
 
 // 4
-let sc=0,tl=30,gt,sp,run=false;const BB=['kamu cantik','kocak','gemesin','23 makin bersinar'];
+let sc=0,tl=30,gt,sp,run=false;const BB=[
+  'Kamu cantik!', 'Gemesin banget 🥺', 'Kok bisa se-manis ini?', 'Selvi the best!',
+  'Love you beb 💖', 'Bau bawang wkwk', 'Jangan ngambek ya', 'Pacar idaman!',
+  'Makasih ya sayang', 'Semangat terus!', 'Makin tuwa makin imut', 'Ciee yang ultah 🎂',
+  'Eh, kangen ga?', 'Kamu hebat loh!', 'Jangan sombong ya 😝', 'Sayang kamu banyak-banyak',
+  'Pipi gemes pengen dicubit', 'Awas bom! 💣', 'Fokus fokus!', 'Cup cup cup 🥰',
+  'Kamu yang terbaik', 'Jangan lupa senyum', 'Duh, cantiknya', 'Aku sayang Selvi 💕'
+];
 const bestKey='selvi_best',getBest=()=>{try{return +localStorage.getItem(bestKey)||0}catch(e){return 0}};
 const upd=()=>$('#hud').textContent=`💖 ${sc}/23   ⏱ ${tl}s`;
 const showBest=()=>{const b=getBest();if(b)$('#gt').textContent=`Tap 23 hati dalam 30 detik! 🏆 Rekor: sisa ${b}s`};
@@ -225,14 +234,14 @@ init[3]=showBest;
 function spawn(){
   const pa=$('#pa'),h=document.createElement('div');h.className='hh';
   const bomb=Math.random()<.2;h.textContent=bomb?'💣':(Math.random()<.3?'💗':'❤️');if(bomb)h.dataset.bomb='1';
-  h.style.left=Math.random()*(pa.clientWidth-56)+'px';pa.appendChild(h);
+  h.style.left=(Math.random()*(pa.clientWidth-116)+30)+'px';pa.appendChild(h);
   gsap.fromTo(h,{y:-60},{y:pa.clientHeight+20,duration:2.4+Math.random()*1.2,ease:'none',onComplete:()=>h.remove()});
   h.onpointerdown=e=>{
     if(!run||h.dead)return;h.dead=1;
     const b=document.createElement('div');b.className='bub';
     if(h.dataset.bomb){sc=Math.max(0,sc-1);tl=Math.max(0,tl-2);upd();vib([80,30,80]);b.textContent='Huuu payahh! Kena bom 💣🥱';b.style.background='#ef4444';b.style.color='#fff';
       gsap.fromTo(app,{x:-5},{x:5,repeat:5,yoyo:true,duration:.05,onComplete:()=>gsap.set(app,{x:0})})}
-    else{sc++;upd();vib(15);b.textContent=BB[Math.random()*4|0]}
+    else{sc++;upd();vib(15);b.textContent=BB[Math.floor(Math.random()*BB.length)]}
     b.style.left=e.clientX+'px';b.style.top=e.clientY+'px';document.body.appendChild(b);
     gsap.to(b,{y:-50,opacity:0,duration:.9,onComplete:()=>b.remove()});
     gsap.killTweensOf(h);gsap.to(h,{scale:2,opacity:0,duration:.25,onComplete:()=>h.remove()});
@@ -262,7 +271,7 @@ $('#cr').onclick=e=>{const r=$('#stage').getBoundingClientRect(),x=e.clientX-r.l
   gsap.set(t,{xPercent:-50,yPercent:-50});gsap.fromTo(t,{scale:.2},{scale:1.2,y:-40,duration:.5,ease:'back.out(3)'});gsap.to(t,{opacity:0,delay:.8,duration:.3,onComplete:()=>t.remove()});spk(x,y,['❤️','💖','✨'])};
 
 // 6
-const WS=['Sehat terus','Rezeki berlimpah','nikah sama aa Randy','Makin cantik','Rezeki lancar','Tetap sama aku'],CL=['#fecdd3','#fde68a','#fbcfe8','#ffe4e6','#fed7aa','#fda4af'];let jn=0;
+const WS=['Sehat terus','Dilimpahkan Rezeki','nikah sama aa Randy','Makin cantik','Jadi pribadi yang lebih baik','Tetap sama aku terus'],CL=['#fecdd3','#fde68a','#fbcfe8','#ffe4e6','#fed7aa','#fda4af'];let jn=0;
 $('#wg').innerHTML=WS.map(w=>`<button class="wc">${w}</button>`).join('');
 $$('.wc').forEach((b,i)=>b.onclick=()=>{if(b.disabled)return;b.disabled=true;b.style.opacity=.3;vib(15);
   const r=b.getBoundingClientRect(),j=$('#jar').getBoundingClientRect(),f=document.createElement('div');f.className='fly';f.textContent='💌';f.style.left=r.left+r.width/2-16+'px';f.style.top=r.top+'px';document.body.appendChild(f);
