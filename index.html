@@ -48,6 +48,8 @@ p{margin:0}.btn{min-height:52px;padding:0 26px;border:0;border-radius:32px;backg
 .grid{display:flex;flex-wrap:wrap;justify-content:center;width:100%}.po{width:31%;margin:-4px;background:#fff;padding:5px 5px 16px;box-shadow:0 6px 14px #0003;transform:rotate(var(--r));cursor:pointer}.po img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
 #zm,#sec{position:absolute;inset:0;background:#2a0f17ee;z-index:50;display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;color:#fff;text-align:center}
 #zm img{max-width:88%;max-height:60%;border:8px solid #fff;border-bottom-width:30px}#zm p,#sec p{font:400 30px 'Great Vibes',cursive}
+.dark-bg{position:absolute;inset:0;background:#111;z-index:1;pointer-events:none;opacity:0.85;transition:opacity 0.1s}
+#s2 > *:not(.dark-bg){position:relative;z-index:2}
 #h7{position:relative;z-index:10;}
 .falling-heart{position:fixed;top:-20px;z-index:0;pointer-events:none;opacity:0.6}
 #quiz,#gift{position:absolute;inset:0;background:rgba(42,15,23,0.95);z-index:100;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;color:#fff}
@@ -66,7 +68,7 @@ p{margin:0}.btn{min-height:52px;padding:0 26px;border:0;border-radius:32px;backg
 <div style="animation:fl 3s ease-in-out infinite;margin:20px 0"><div class="env" id="env"><div class="flap"></div><div class="hp">🫰</div><div class="envb"></div></div></div>
 <button class="btn" id="open">Wajib Buka Suratnya 💖</button></section>
 
-<section class="sc" id="s2"><h2>Tiup Lilin 23 🎂</h2>
+<section class="sc" id="s2"><div class="dark-bg" id="dark-overlay"></div><h2>Tiup Lilin🎂</h2>
 <svg class="cake" viewBox="0 0 300 280"><ellipse cx="150" cy="258" rx="135" ry="14" fill="#fff" opacity=".6"/><rect x="45" y="172" width="210" height="84" rx="18" fill="#fda4af"/><rect x="75" y="115" width="150" height="62" rx="16" fill="#FFE4E6" stroke="#D4AF37"/><path d="M45 192q26 22 52 0t52 0 52 0 52 0" stroke="#fff" stroke-width="10" fill="none"/>
 <text x="118" y="108" font-size="64" font-weight="700" fill="#D4AF37" text-anchor="middle" font-family="Poppins">2</text><text x="182" y="108" font-size="64" font-weight="700" fill="#D4AF37" text-anchor="middle" font-family="Poppins">3</text>
 <ellipse class="fl" cx="118" cy="38" rx="9" ry="15" fill="#fbbf24"/><ellipse class="fl" cx="182" cy="38" rx="9" ry="15" fill="#fbbf24"/></svg>
@@ -96,7 +98,9 @@ p{margin:0}.btn{min-height:52px;padding:0 26px;border:0;border-radius:32px;backg
 <div class="pp">Doa aku buat kamu, semoga kamu selalu diberi kesehatan, diberi perlindungan, semoga apa yang kamu cita²kan dan kamu impi²kan tercapai ya sayangku, aku juga ingin kamu lakuin sesuatu yang menurut kamu itu baik, aku selalu dukung kamu beb tenang aja, 100% aku selalu support kamu dengan apapun yang kamu lakuin selama itu baik buat kamu dan buat kita sayang. Aku sayang kamu banget beb, sayang banget. 💕<br>~ aa mu yang tamvan baik hati</div>
 <div style="text-align:center"><button class="btn" id="rd" style="font-size:15px">Lanjut baca...</button></div></div></section>
 
-<section class="sc" id="s8"><h1 style="font-size:40px;color:var(--d)">Selamat Ulang Tahun ke-23, Selvi Cahya Lestari 💖</h1><div class="grid" id="grid"></div>
+<section class="sc" id="s8"><h1 style="font-size:40px;color:var(--d)">Selamat Ulang Tahun ke-23, Selvi Cahya Lestari 💖</h1>
+<p style="font-weight:600; color:var(--d); margin-bottom:10px; font-size:14px;">Tap semua fotonya satu-satu ya! Ada kejutan kalau dibuka semua 🤫📸</p>
+<div class="grid" id="grid"></div>
 <div class="row" style="padding-bottom:20px"><button class="btn sm" id="b1">Putar Ulang</button><button class="btn sm" id="b2">Tabur Hati Lagi 💖</button><button class="btn sm" id="b3">Kirim ke WA ke aa</button><button class="btn sm" id="btn-gift" style="background:linear-gradient(135deg,#fbbf24,#d97706);box-shadow:0 4px 15px #d9770666">Buka Kado 🎁</button></div></section>
 
 <button class="btn" id="nx">Lanjut 💖</button>
@@ -185,18 +189,50 @@ nx.onclick = () => {
 // 1
 $('#open').onclick=function(){this.disabled=true;gsap.fromTo('#env',{x:-6},{x:6,repeat:5,yoyo:true,duration:.05});gsap.to('.flap',{rotationX:180,duration:.7,delay:.3,transformOrigin:'top'});gsap.to('.hp',{opacity:1,y:-130,scale:1.7,duration:.9,delay:.6,ease:'back.out(1.5)',onStart:big});setTimeout(()=>go(1),2300)};
 // 2
-init[1]=()=>gsap.to('.fl',{scaleY:1.25,scaleX:.85,repeat:-1,yoyo:true,duration:.18,stagger:.07});
+init[1]=()=>{ pg=0; $('#dark-overlay').style.opacity = 0.85; gsap.to('.fl',{scaleY:1.25,scaleX:.85,repeat:-1,yoyo:true,duration:.18,stagger:.07}); };
 let hd=false,pg=0,bl=false;const hb=$('#hold');hb.onpointerdown=()=>hd=true;['pointerup','pointerleave','pointercancel'].forEach(e=>hb.addEventListener(e,()=>hd=false));
-setInterval(()=>{if(bl||cur!=1)return;pg=Math.max(0,Math.min(1,pg+(hd?.035:-.04)));$('#bar i').style.width=pg*100+'%';gsap.set('.fl',{opacity:1-pg*.5});if(pg>=1){bl=true;gsap.to('.fl',{opacity:0,scale:0,duration:.4});big();$('#t2').textContent='Make a wish, cantikku ✨';hb.style.display='none';unlock()}},50);
+setInterval(()=>{if(bl||cur!=1)return;pg=Math.max(0,Math.min(1,pg+(hd?.035:-.04)));$('#bar i').style.width=pg*100+'%';$('#dark-overlay').style.opacity = Math.max(0, 0.85 - (pg * 0.85));gsap.set('.fl',{opacity:1-pg*.5});if(pg>=1){bl=true;gsap.to('.fl',{opacity:0,scale:0,duration:.4});big();$('#t2').textContent='yeeeyyy Happy Birthday cantiknnya aa';hb.style.display='none';unlock()}},50);
 // 3
-const CP=[['foto1','First date jalan kaki, tapi tetep happy soalnya sama my baby gurl 🤭🤭'],['foto2','lutuuu kek kue putuu 😙'],['foto3','Cukup bayangan kita aja ya yang bayang²in pikiyan kamuhh, gaboyeh maca lalu yg bayang²in pikiyan you']];
+const CP=[['foto1','First date jalan kaki, tapi tetep happy soalnya sama my pacal botol aqua 300ml 🤭🤭'],['foto2','lutuuu kek kue putuu 😙'],['foto3','Cukup bayangan kita aja ya yang bayang²in pikiyan kamuhh, gaboyeh maca lalu yg bayang²in pikiyan you']];
 $('#sw').innerHTML=CP.map(c=>`<div class="cd"><div class="in"><div class="fc"><img src="${IM[c[0]]}"></div><div class="bk">${c[1]}</div></div></div>`).join('');
 $$('.cd').forEach(c=>c.onclick=()=>c.classList.toggle('f'));init[2]=()=>setTimeout(unlock,1200);
 // 4
 let sc=0,tl=30,gt,sp,run=false;const BB=['kamu cantik','kocak','gemesin','23 makin bersinar'];
 const upd=()=>$('#hud').textContent=`💖 ${sc}/23   ⏱ ${tl}s`;
-function spawn(){const pa=$('#pa'),h=document.createElement('div');h.className='hh';h.textContent=Math.random()<.3?'💗':'❤️';h.style.left=Math.random()*(pa.clientWidth-56)+'px';pa.appendChild(h);gsap.fromTo(h,{y:-60},{y:pa.clientHeight+20,duration:2.4+Math.random()*1.2,ease:'none',onComplete:()=>h.remove()});
-h.onpointerdown=e=>{if(!run||h.dead)return;h.dead=1;sc++;upd();const b=document.createElement('div');b.className='bub';b.textContent=BB[Math.random()*4|0];b.style.left=e.clientX+'px';b.style.top=e.clientY+'px';document.body.appendChild(b);gsap.to(b,{y:-50,opacity:0,duration:.9,onComplete:()=>b.remove()});gsap.killTweensOf(h);gsap.to(h,{scale:2,opacity:0,duration:.25,onComplete:()=>h.remove()});if(sc>=23)gEnd(true)}}
+function spawn(){
+  const pa=$('#pa'),h=document.createElement('div');h.className='hh';
+  const isBomb = Math.random() < 0.2; // Peluang 20% muncul bom
+  h.textContent = isBomb ? '💣' : (Math.random()<.3?'💗':'❤️');
+  if(isBomb) h.dataset.bomb = '1';
+  h.style.left=Math.random()*(pa.clientWidth-56)+'px';
+  pa.appendChild(h);
+  gsap.fromTo(h,{y:-60},{y:pa.clientHeight+20,duration:2.4+Math.random()*1.2,ease:'none',onComplete:()=>h.remove()});
+  
+  h.onpointerdown=e=>{
+    if(!run||h.dead)return;
+    h.dead=1;
+    const b=document.createElement('div');b.className='bub';
+    
+    if(h.dataset.bomb){
+      sc = Math.max(0, sc - 1); // Skor dikurangi
+      tl = Math.max(0, tl - 2); // Waktu dikurangi 2 detik
+      upd();
+      b.textContent = "Huuu payahh! Kena bom 💣🥱";
+      b.style.background = '#ef4444';
+      b.style.color = '#fff';
+      gsap.fromTo('#app',{x:-5},{x:5,repeat:5,yoyo:true,duration:0.05,onComplete:()=>$('#app').style.transform='translateX(0)'});
+    } else {
+      sc++; upd();
+      b.textContent = BB[Math.random()*4|0];
+    }
+    
+    b.style.left=e.clientX+'px';b.style.top=e.clientY+'px';document.body.appendChild(b);
+    gsap.to(b,{y:-50,opacity:0,duration:.9,onComplete:()=>b.remove()});
+    gsap.killTweensOf(h);
+    gsap.to(h,{scale:2,opacity:0,duration:.25,onComplete:()=>h.remove()});
+    if(sc>=23)gEnd(true);
+  }
+}
 function gEnd(w){run=false;clearInterval(sp);clearInterval(gt);$$('.hh').forEach(h=>h.remove());if(w){$('#rv').style.display='flex';gsap.fromTo('#rv .ph',{scale:.2,rotation:-20},{scale:1,rotation:0,duration:1,ease:'back.out(1.7)'});big();setTimeout(big,900);unlock()}else{$('#gs').style.display='block';$('#gt').textContent='Yah, kurang! Coba lagi yuk 💪';$('#gst').textContent='Main Lagi'}}
 $('#gst').onclick=()=>{sc=0;tl=30;run=true;$('#gs').style.display='none';upd();sp=setInterval(spawn,380);gt=setInterval(()=>{tl--;upd();if(tl<=0)gEnd(false)},1000)};
 // 5
@@ -238,9 +274,25 @@ o7 = function(){
 }
 $('#rd').onclick=()=>{const p=$$('.pp')[++pi];p.style.display='block';gsap.from(p,{opacity:0,y:20,duration:.6});$('#paper').scrollTo({top:9999,behavior:'smooth'});if(pi==2){$('#rd').style.display='none';big();unlock()}};
 // 8
-const CAP=[['foto1','Foto resmi pertama ngedate'],['foto2','Deket kamu mayu², kalo jauh mau²'],['foto3','Bayangan kita aja serasi 🌙'],['foto6','Senyum yang jadi alasan aku betah'],['foto4','Pipi gemes, siap dicubit 🥹'],['foto5','Versi kedua, tetap gemezz'],['foto7','Minum dulu, biar makin kuat gemesnya'],['foto8','Duduk santai kek dipantai beb'],['foto9','Bocil 23 tahun, bobok manja 😆']];let sh=0;
+const CAP=[['foto1','Foto resmi pertama ngedate'],['foto2','Deket kamu mayu², kalo jauh mau²'],['foto3','Bayangan kita aja serasi 🌙'],['foto6','Senyum yang jadi alasan aku betah'],['foto4','Pipi gemes, siap dicubit 🥹'],['foto5','Versi kedua, tetap gemezz'],['foto7','Minum dulu, biar makin kuat gemesnya'],['foto8','Duduk santai kek dipantai beb'],['foto9','Bocil 23 tahun, bobok manja 😆']];let seenPhotos = new Set();
 $('#grid').innerHTML=CAP.map((c,i)=>`<figure class="po" style="margin:-4px;--r:${(Math.random()*14-7).toFixed(1)}deg"><img data-k="${i}" src="${IM[c[0]]}"></figure>`).join('');
-$$('.po').forEach((f,i)=>f.onclick=()=>{if(i==2&&++sh==3){sh=0;$('#sec').style.display='flex';big();return}$('#zi').src=IM[CAP[i][0]];$('#zc').textContent=CAP[i][1];$('#zm').style.display='flex';gsap.from('#zi',{scale:.5,duration:.4,ease:'back.out(1.6)'})});
+$$('.po').forEach((f,i)=>f.onclick=()=>{
+  $('#zi').src=IM[CAP[i][0]];
+  $('#zc').textContent=CAP[i][1];
+  $('#zm').style.display='flex';
+  gsap.from('#zi',{scale:.5,duration:.4,ease:'back.out(1.6)'});
+  
+  seenPhotos.add(i);
+  // Jika kesembilan foto sudah dibuka
+  if(seenPhotos.size === CAP.length) {
+    $('#zm').onclick = () => {
+      $('#zm').style.display='none';
+      $('#sec').style.display='flex';
+      big();
+      $('#zm').onclick = () => $('#zm').style.display='none'; // Kembalikan fungsi normal
+    };
+  }
+});
 $('#zm').onclick=()=>$('#zm').style.display='none';$('#sec').onclick=()=>$('#sec').style.display='none';
 init[7]=()=>{big();setTimeout(big,1200)};
 $('#b1').onclick=()=>location.reload();$('#b2').onclick=big;
