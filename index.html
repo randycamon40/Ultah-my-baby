@@ -110,6 +110,7 @@ h1,h2{font-family:Fraunces,serif;font-style:italic;font-weight:500;margin:0;font
 .ow-btn:active{transform:scale(0.95);background:var(--wine)}
 #ow-modal{position:absolute;inset:0;background:rgba(14,4,18,.96);z-index:100;display:none;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;color:#fff}
 #ow-text{background:linear-gradient(180deg,#fbefe0,#f4dfc8);color:#4a1330;padding:24px;border-radius:20px;border:2px dashed var(--wine);font:600 24px/1.4 Caveat,cursive;max-width:90%;box-shadow:0 10px 30px rgba(0,0,0,0.5);margin-top:15px;text-align:left}
+.smoke-particle{position:fixed;background:rgba(255,255,255,0.4);border-radius:50%;pointer-events:none;filter:blur(4px);z-index:9999;transform:translate(-50%,-50%)}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important}}
 </style></head><body><div id="app">
 <div id="top"><div id="dots"><i class="a"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span id="lb">1/10</span><button id="mu" aria-label="Musik">🔊</button></div>
@@ -223,7 +224,47 @@ init[1]=()=>{pg=0;$('#dark-overlay').style.opacity=.85};
 hb.onpointerdown=()=>hd=true;['pointerup','pointerleave','pointercancel'].forEach(e=>hb.addEventListener(e,()=>hd=false));
 hb.addEventListener('contextmenu',e=>e.preventDefault());
 setInterval(()=>{if(bl||cur!=1)return;pg=Math.max(0,Math.min(1,pg+(hd?.035:-.04)));$('#bar i').style.width=pg*100+'%';$('#dark-overlay').style.opacity=Math.max(0,.85-pg*.85);gsap.set('.fl',{opacity:1-pg*.5});
-  if(pg>=1){bl=true;vib([60,40,60]);gsap.to('.fl',{opacity:0,scale:0,duration:.4});big();$('#t2').textContent='yeeeyyy Happy Birthday cantiknnya aa';hb.style.visibility='hidden';unlock()}},50);
+  if(pg>=1){
+  bl=true;
+  vib([60,40,60]);
+  gsap.to('.fl',{opacity:0,scale:0,duration:.4});
+  
+  // Efek Asap
+  const cakeRect = document.querySelector('.cake').getBoundingClientRect();
+  const xLeft = cakeRect.left + cakeRect.width * 0.366;
+  const xRight = cakeRect.left + cakeRect.width * 0.633;
+  const yPos = cakeRect.top + cakeRect.height * 0.19;
+
+  for(let i=0; i<16; i++){
+    setTimeout(() => {
+      const p = document.createElement('div');
+      p.className = 'smoke-particle';
+      const isLeft = Math.random() > 0.5;
+      const startX = (isLeft ? xLeft : xRight) + (Math.random()*10 - 5);
+      p.style.left = startX + 'px';
+      p.style.top = yPos + 'px';
+      const size = Math.random()*15 + 10;
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      document.body.appendChild(p);
+      
+      gsap.to(p, {
+        y: -60 - Math.random()*50,
+        x: (Math.random()*40 - 20),
+        scale: Math.random()*2 + 1,
+        opacity: 0,
+        duration: 1.5 + Math.random(),
+        ease: 'power1.out',
+        onComplete: () => p.remove()
+      });
+    }, i * 80);
+  }
+
+  big();
+  $('#t2').textContent='yeeeyyy Happy Birthday cantiknnya aa';
+  hb.style.visibility='hidden';
+  unlock();
+}},50);
 
 // 3
 const CP=[['foto1','First date jalan kaki, tapi tetep happy soalnya sama my pacal botol yaqult 🤭🤭'],['foto2','lutuuu kek kue putuu 😙'],['foto3','Cukup bayangan kita aja ya yang bayang²in pikiyan kamuhh, gaboyeh maca lalu yg bayang²in pikiyan you']];
