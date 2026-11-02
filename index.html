@@ -328,7 +328,7 @@ o7 = function(){
 }
 $('#rd').onclick=()=>{const p=$$('.pp')[++pi];p.style.display='block';gsap.from(p,{opacity:0,y:20,duration:.6});$('#paper').scrollTo({top:9999,behavior:'smooth'});if(pi==2){$('#rd').style.display='none';big();unlock()}};
 // 8
-const CAP=[['foto1','Foto resmi pertama ngedate'],['foto2','Foto berdua mayuan, kalo gak lagi foto mau an'],['foto3','Bayangan kita aja serasi 🌙'],['foto6','Senyum kmu yang jadi alasan aku betah'],['foto4','Pipi gemes, pen cubit 🥹'],['foto5','Versi kedua, tetap imutt gemezz'],['foto7','Minum dulu, biar makin kuat ngambeknya 😏'],['foto8','Duduk santai kek dipantai beb'],['foto9','Bocil 23 tahun, bobok manja 😆']];let seenPhotos = new Set();
+const CAP=[['foto1','Foto resmi pertama ngedate'],['foto2','Foto berdua mayuan, kalo gak lagi foto mau an'],['foto3','Bayangan kita aja serasi 🌙'],['foto6','Senyum kmu yang jadi alasan aku betah'],['foto4','Pipi gemes, pen cubit 🥹'],['foto5','Versi kedua, tetap imutt gemezz'],['foto7','ngebatagor mahal duyu biar makin kuat ngambeknya 😏'],['foto8','nyender muyuk 🥰🥰'],['foto9','Bocil 23 tahun, bobok manja 😆']];let seenPhotos = new Set();
 $('#grid').innerHTML=CAP.map((c,i)=>`<figure class="po" style="margin:-4px;--r:${(Math.random()*14-7).toFixed(1)}deg"><img data-k="${i}" src="${IM[c[0]]}"></figure>`).join('');
 $$('.po').forEach((f,i)=>f.onclick=()=>{
   $('#zi').src=IM[CAP[i][0]];
