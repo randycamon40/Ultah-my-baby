@@ -102,9 +102,17 @@ h1,h2{font-family:Fraunces,serif;font-style:italic;font-weight:500;margin:0;font
 #gift-secret{display:none;background:linear-gradient(180deg,#fbefe0,#f4dfc8);color:#4a1330;padding:20px;border-radius:20px;margin-top:20px;font:600 23px/1.35 Caveat,cursive;border:2px dashed var(--wine)}
 .close-btn{position:absolute;top:20px;right:20px;background:var(--glass);border:1px solid var(--line);color:#fff;font-size:18px;width:42px;height:42px;border-radius:50%;cursor:pointer;z-index:101}
 .falling-heart{position:absolute;top:-20px;z-index:1;pointer-events:none;opacity:.55}
+.scratch-wrap{position:relative;width:min(80vw,300px);aspect-ratio:1;border-radius:24px;overflow:hidden;border:4px solid var(--gold);box-shadow:0 15px 35px rgba(0,0,0,0.5);margin-top:10px}
+#scratch-img{width:100%;height:100%;object-fit:cover;display:block}
+#scratch-canvas{position:absolute;inset:0;touch-action:none;cursor:crosshair;display:none}
+.ow-grid{display:flex;flex-direction:column;gap:12px;width:80%;max-width:300px;margin-top:20px}
+.ow-btn{background:var(--glass);border:1px solid var(--line);color:var(--cream);padding:15px;border-radius:16px;font:600 16px Figtree;cursor:pointer;backdrop-filter:blur(10px);transition:transform 0.2s}
+.ow-btn:active{transform:scale(0.95);background:var(--wine)}
+#ow-modal{position:absolute;inset:0;background:rgba(14,4,18,.96);z-index:100;display:none;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;color:#fff}
+#ow-text{background:linear-gradient(180deg,#fbefe0,#f4dfc8);color:#4a1330;padding:24px;border-radius:20px;border:2px dashed var(--wine);font:600 24px/1.4 Caveat,cursive;max-width:90%;box-shadow:0 10px 30px rgba(0,0,0,0.5);margin-top:15px;text-align:left}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important}}
 </style></head><body><div id="app">
-<div id="top"><div id="dots"><i class="a"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span id="lb">1/8</span><button id="mu" aria-label="Musik">🔊</button></div>
+<div id="top"><div id="dots"><i class="a"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span id="lb">1/10</span><button id="mu" aria-label="Musik">🔊</button></div>
 
 <section class="sc on" id="s1"><div><h1>Buat Selvi Cahya Lestari</h1><p class="pill" style="margin-top:12px">ada surat spesial buat kmu nich 💌</p></div>
 <div style="animation:fl 3s ease-in-out infinite;margin:20px 0"><div class="env" id="env"><div class="flap"></div><div class="seal">❤️</div><div class="hp">🫰</div><div class="envb"></div></div></div>
@@ -130,6 +138,7 @@ h1,h2{font-family:Fraunces,serif;font-style:italic;font-weight:500;margin:0;font
 
 <section class="sc" id="s3"><h2>Kenangan Kita 📸</h2><p class="sub">geser ⟷ lalu tap kartu untuk membalik</p><div class="sw" id="sw"></div></section>
 
+
 <section class="sc" id="s4"><div id="gbg" data-im="foto12"></div><div id="pa"></div><div id="hud">💖 0/23 ⏱ 30s</div>
 <div class="g" id="gs" style="z-index:4"><h2>Tangkap Hati 💗</h2><p id="gt" class="sub" style="margin:8px 0 14px">Tap 23 hati dalam 30 detik!</p><button class="btn" id="gst">Mulai!</button></div>
 <div id="rv"><div class="ph" data-im="foto10" style="background-size:cover;background-position:center"></div><div id="rate"></div><h2>DUARRRRR, Kaget tidack??! 💖</h2><p class="sub">Liat deh cantik kan pacal aa, makin tuwa makin imutzzzz 🤭🤭</p><p class="pill" id="best"></p></div></section>
@@ -142,7 +151,9 @@ h1,h2{font-family:Fraunces,serif;font-style:italic;font-weight:500;margin:0;font
 <section class="sc" id="s6"><div class="pl" style="left:6%;top:70px"><div data-im="foto7"></div></div><div class="pl" style="right:6%;top:96px"><div data-im="foto8"></div></div>
 <h2 style="margin-top:50px">Toples Harapan 🫙</h2><div class="jar" id="jar"><div class="lid"></div><div id="jin"></div></div>
 <p id="t6" class="sub">Tap kartu, kirim harapan ke toples</p><div class="wg" id="wg"></div></section>
+<section class="sc" id="s_scratch"><h2>We wish ✨</h2><p class="sub">Gosok layarnya pakai jari yaa!</p><div class="scratch-wrap"><img src="foto13.jpg" id="scratch-img"><canvas id="scratch-canvas"></canvas></div><div id="scratch-msg" style="opacity:0; margin-top:20px; font-weight:700; color:var(--gold)">Sabar ya sayangku sampe kita bisa foto resmi berdua begini, love you beb💖</div></section>
 
+<section class="sc" id="s_openwhen"><h2>Open When... ✉️</h2><p class="sub">Buka sesuai perasaanmu saat ini</p><div class="ow-grid"><button class="ow-btn" data-ow="kangen">💌 Buka pas Kangen</button><button class="ow-btn" data-ow="marah">😡 Buka pas Marah</button><button class="ow-btn" data-ow="sedih">😢 Buka pas Sedih</button></div></section>
 <section class="sc" id="s7"><h2 id="h7">Surat Untukmu 💌</h2>
 <div class="env" id="e7"><div class="flap"></div><div class="envb"></div></div><p id="t7" class="sub">Swipe ke atas ↑ (atau tap) untuk membuka</p>
 <div class="paper" id="paper">
@@ -162,6 +173,7 @@ h1,h2{font-family:Fraunces,serif;font-style:italic;font-weight:500;margin:0;font
 <button class="btn" id="nx">Lanjut 💖</button>
 <div id="quiz"><h2>Nanya Dongg! 😜</h2><p class="sub" style="margin-bottom:10px">Siapa yang paling sering ngambek?</p><button class="q-btn" onclick="checkQ(this)">Aku (Selvi)</button><button class="q-btn" onclick="checkQ(this)">Kamu (Aa)</button><button class="q-btn" onclick="checkQ(this,'1')">Kucing 🐱</button><div id="q-res" style="margin-top:15px;font-weight:600;font-size:14px;min-height:24px"></div></div>
 <div id="gift"><button class="close-btn" id="gx">✕</button><h2>Kado Spesial 🎁</h2><div class="gift-box" id="gift-box" onclick="openGift()">🎁</div><div id="gift-secret">Taraaa! 🎉<br>Kadonya prank, hehe gak kok canda, hadiahnya voucher make a wish atau permintaan yang harus dilakuin aa seharian penuh 🤭🤭 <br>Tagih aja kapanpun kmu mau yakk tapi sekaliiiiii 😉💖</div></div>
+<div id="ow-modal"><button class="close-btn" id="ow-close">✕</button><h2 id="ow-title"></h2><div id="ow-text"></div></div>
 <div id="zm"><button class="close-btn" id="zx">✕</button><img id="zi"><p id="zc"></p><div class="zn"><button id="zp">‹</button><span id="zk"></span><button id="zq">›</button></div></div>
 <div id="sec"><p>Beb, kamu akan selalu jadi wanita favorit aku 💖</p><small>tap untuk menutup</small></div>
 </div>
@@ -194,8 +206,8 @@ let cur=0;const init={};
 const unlock=()=>{nx.style.display='block';gsap.fromTo(nx,{y:20,opacity:0},{y:0,opacity:1,duration:.4})};
 function go(n){const a=$$('.sc'),o=a[cur];if(!a[n])return;
   gsap.to(o,{opacity:0,duration:.3,onComplete:()=>{o.classList.remove('on');if(cur==3&&run)gEnd(false,true);cur=n;const s=a[n];s.classList.add('on');gsap.fromTo(s,{opacity:0,y:20},{opacity:1,y:0,duration:.5});
-  $$('#dots i').forEach((d,i)=>d.classList.toggle('a',i<=n));$('#lb').textContent=(n+1)+'/8';nx.style.display='none';init[n]&&init[n]()}})}
-nx.onclick=()=>{if(cur==6&&!$('#quiz').dataset.done)$('#quiz').style.display='flex';else go(cur+1)};
+  $$('#dots i').forEach((d,i)=>d.classList.toggle('a',i<=n));$('#lb').textContent=(n+1)+'/10';nx.style.display='none';init[n]&&init[n]()}})}
+nx.onclick=()=>{if(cur==7&&!$('#quiz').dataset.done)$('#quiz').style.display='flex';else go(cur+1)};
 
 // 1
 $('#open').onclick=function(){this.disabled=true;vib(30);
@@ -293,6 +305,77 @@ e7.onpointerdown=e=>sy=e.clientY;e7.onpointerup=e=>{if(sy-e.clientY>35)o7()};e7.
 $('#rd').onclick=()=>{const p=$$('.pp')[++pi];if(!p)return;p.style.display='block';gsap.from(p,{opacity:0,y:20,duration:.6});
   if(pi==2){$('#rd').style.display='none';big();unlock()}};
 
+// SCRATCH CARD
+let canvas, ctx, isDrawing = false;
+init[6] = () => {
+    canvas = document.getElementById('scratch-canvas');
+    const wrap = canvas.parentElement;
+    canvas.width = wrap.clientWidth;
+    canvas.height = wrap.clientHeight;
+    ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#cbd5e1'; 
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.font = '600 20px Figtree';
+    ctx.fillStyle = '#fff';
+    ctx.textAlign = 'center';
+    ctx.fillText('Gosok disini 👆', canvas.width/2, canvas.height/2);
+    canvas.style.display = 'block';
+    canvas.style.opacity = '1';
+    document.getElementById('scratch-msg').style.opacity = '0';
+    unlock();
+
+    const scratch = (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.beginPath();
+        ctx.arc(x, y, 25, 0, Math.PI * 2);
+        ctx.fill();
+    };
+    canvas.onpointerdown = (e) => { isDrawing = true; scratch(e); };
+    canvas.onpointermove = (e) => { if(isDrawing) scratch(e); };
+    canvas.onpointerup = () => {
+        if(!isDrawing) return; isDrawing = false;
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        let transparent = 0;
+        for (let i = 3; i < imageData.data.length; i += 4) {
+            if (imageData.data[i] === 0) transparent++;
+        }
+        if ((transparent / (canvas.width * canvas.height)) > 0.4) {
+            canvas.style.transition = 'opacity 0.6s';
+            canvas.style.opacity = '0';
+            setTimeout(() => {
+                canvas.style.display = 'none';
+                document.getElementById('scratch-msg').style.opacity = '1';
+                big();
+            }, 600);
+        }
+    };
+    canvas.onpointercancel = canvas.onpointerup;
+    canvas.onpointerleave = canvas.onpointerup;
+};
+
+// OPEN WHEN
+init[7] = () => {
+    document.querySelectorAll('.ow-btn').forEach(btn => {
+        btn.onclick = () => {
+            const type = btn.dataset.ow;
+            const data = {
+                kangen: { title: "Kangen? 🥺", text: "Kalo kmu lg kangen, tutup mata ya beb teyus bayangin aa lagi peyuk kamu. Nggak usah khawatir ya beb, aa selalu ada buat kamu. Nanti kita ketemu peyuk lagu ya sayang..." },
+                marah: { title: "Marah? 😡", text: "Marah² muyuk, heran... barin aa omelin juga, tp gajadi deh peyuk aja beb 🤗🤗" },
+                sedih: { title: "Sedih? 😢", text: "Ututu jangan sedih beb, berat ya sayang ya, tp aku bangga lho sama kamu beb, Kamu udah hebat banget selama ini. kalo kita ketemu, sandaran ke aa aja ya baby. Aa nggak bakal kemana-mana juga. cinihhh peyuk sama aa eyus-eyus kepalanya 🤗🤗 ✨" }
+            };
+            document.getElementById('ow-title').textContent = data[type].title;
+            document.getElementById('ow-text').textContent = data[type].text;
+            document.getElementById('ow-modal').style.display = 'flex';
+            vib(30);
+        };
+    });
+    document.getElementById('ow-close').onclick = () => document.getElementById('ow-modal').style.display = 'none';
+    unlock();
+};
+
 // 8
 const CAP=[['foto1','Foto resmi pertama ngedate'],['foto2','Foto berdua mayuan, kalo gak lagi foto mau an'],['foto3','Bayangan kita aja serasi 🌙'],['foto6','Senyum kmu yang jadi alasan aku betah'],['foto4','Pipi gemes, pen cubit 🥹'],['foto5','Versi kedua, tetap imutt gemezz'],['foto7','Ngebatagor mahal duyuk biar makin kuat ngambeknya 😏'],['foto8','nyender muyuk nich 🥰🥰'],['foto9','Bocil 23 tahun, bobok manja 😆']];
 const seen=new Set();let zi=0,secDone=false;
@@ -304,7 +387,7 @@ $('#zp').onclick=e=>{e.stopPropagation();show(zi-1)};$('#zq').onclick=e=>{e.stop
 $('#zx').onclick=e=>{e.stopPropagation();closeZ()};$('#zm').onclick=e=>{if(e.target.id=='zm')closeZ()};
 let zx0=0;$('#zm').onpointerdown=e=>zx0=e.clientX;$('#zm').onpointerup=e=>{const d=e.clientX-zx0;if(Math.abs(d)>50)show(zi+(d<0?1:-1))};
 $('#sec').onclick=()=>$('#sec').style.display='none';
-init[7]=()=>{big();setTimeout(big,1200)};
+init[9]=()=>{big();setTimeout(big,1200)};
 $('#b1').onclick=()=>location.reload();$('#b2').onclick=big;
 $('#btn-gift').onclick=()=>{$('#gift').style.display='flex';gsap.from('#gift-box',{scale:0,duration:.5,ease:'back.out(2)'})};
 $('#gx').onclick=()=>$('#gift').style.display='none';
@@ -313,7 +396,7 @@ window.openGift=()=>{const g=$('#gift-box');if(g.classList.contains('open'))retu
     gsap.to(g,{scale:0,opacity:0,duration:.3,onComplete:()=>{$('#gift-secret').style.display='block';gsap.from('#gift-secret',{scale:.5,opacity:0,duration:.6,ease:'back.out(1.5)'});hc();big()}})}})};
 window.checkQ=(btn,ok)=>{const res=$('#q-res');
   if(ok){btn.style.background='#22c55e';btn.style.borderColor='#22c55e';res.style.color='#4ade80';res.textContent='Betulll! Kucing emang hobinya ngambek kaya youu 😹';
-    $$('.q-btn').forEach(b=>b.disabled=true);setTimeout(()=>{$('#quiz').dataset.done='1';$('#quiz').style.display='none';go(7)},1500)}
+    $$('.q-btn').forEach(b=>b.disabled=true);setTimeout(()=>{$('#quiz').dataset.done='1';$('#quiz').style.display='none';go(8)},1500)}
   else{btn.style.background='#ef4444';btn.style.borderColor='#ef4444';res.style.color='#f87171';vib(60);
     res.textContent=btn.textContent.includes('Selvi')?'Kok tumben ngaku, hemmm mencurigakan 🤔🤔':'Ga mungkin lah, Aa kan penyabar 😎';
     gsap.fromTo(btn,{x:-10},{x:10,repeat:5,yoyo:true,duration:.05,onComplete:()=>{gsap.set(btn,{x:0});btn.style.background='';btn.style.borderColor=''}})}};
