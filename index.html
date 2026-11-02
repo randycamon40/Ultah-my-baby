@@ -22,14 +22,14 @@ p{margin:0}.btn{min-height:52px;padding:0 26px;border:0;border-radius:32px;backg
 .env{position:relative;width:260px;height:170px;perspective:600px;transform:translateZ(0)}.envb{position:absolute;inset:0;background:#fff1f2;border-radius:14px;box-shadow:0 20px 40px #be123c55;z-index:1;border:2px solid var(--g)}
 .flap{position:absolute;top:0;left:0;border-left:130px solid transparent;border-right:130px solid transparent;border-top:100px solid #fda4af;transform-origin:top;z-index:3;will-change:transform}
 .hp{position:absolute;left:0;right:0;top:50px;font-size:60px;z-index:4;opacity:0}
-.cake{width:290px}.fl{transform-box:fill-box;transform-origin:50% 100%}
+.cake{width:290px;overflow:visible}.fl{transform-box:fill-box;transform-origin:50% 100%;animation:flicker 0.8s infinite alternate ease-in-out}@keyframes flicker{0%,100%{transform:scale(1)}50%{transform:scale(1.15,1.35)}}
 #hold{touch-action:none;width:240px}#bar{width:240px;height:10px;border-radius:10px;background:#fff9;overflow:hidden}#bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--g),var(--r))}
 .sw{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;width:100%;padding:0 11%;scrollbar-width:none}.sw::-webkit-scrollbar{display:none}
 .cd{flex:0 0 100%;aspect-ratio:3/4.1;scroll-snap-align:center;perspective:900px}.in{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}.cd.f .in{transform:rotateY(180deg)}
 .fc,.bk{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:32px;overflow:hidden;border:4px solid #fff;box-shadow:0 14px 30px #be123c44}
 .fc img{width:100%;height:100%;object-fit:cover}.bk{transform:rotateY(180deg);background:var(--c);display:flex;align-items:center;justify-content:center;padding:24px;font:400 30px 'Great Vibes',cursive}
-#gbg{position:absolute;inset:-20px;background-size:cover;background-position:center;filter:blur(14px) brightness(.85)}
-#pa{position:absolute;inset:0;overflow:hidden}.hh{position:absolute;top:0;font-size:44px;width:52px;height:52px;line-height:52px;text-align:center;cursor:pointer}
+#gbg{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(4px) brightness(.6);transform:translateZ(0)}
+#pa{position:absolute;inset:0;overflow:hidden}.hh{position:absolute;top:0;font-size:44px;width:52px;height:52px;line-height:52px;text-align:center;cursor:pointer;will-change:transform}
 #hud{position:absolute;top:44px;left:0;right:0;font-weight:600;font-size:18px;color:#fff;text-shadow:0 2px 6px #0008;z-index:3}
 .bub{position:fixed;z-index:60;background:#fff;color:var(--d);padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;pointer-events:none;transform:translate(-50%,-50%)}
 #rv{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#fff7edee;z-index:5;padding:20px}
@@ -49,7 +49,7 @@ p{margin:0}.btn{min-height:52px;padding:0 26px;border:0;border-radius:32px;backg
 #zm,#sec{position:absolute;inset:0;background:#2a0f17ee;z-index:50;display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;color:#fff;text-align:center}
 #zm img{max-width:88%;max-height:60%;border:8px solid #fff;border-bottom-width:30px}#zm p,#sec p{font:400 30px 'Great Vibes',cursive}
 .dark-bg{position:absolute;inset:0;background:#111;z-index:1;pointer-events:none;opacity:0.85;transition:opacity 0.1s}
-#s1 > *:not(.dark-bg), #s2 > *:not(.dark-bg){position:relative;z-index:2}
+#s2 > *:not(.dark-bg){position:relative;z-index:2}
 #h7{position:relative;z-index:10;}
 .falling-heart{position:fixed;top:-20px;z-index:0;pointer-events:none;opacity:0.6}
 #quiz,#gift{position:absolute;inset:0;background:rgba(42,15,23,0.95);z-index:100;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;color:#fff}
@@ -64,15 +64,42 @@ p{margin:0}.btn{min-height:52px;padding:0 26px;border:0;border-radius:32px;backg
 </style></head><body><div id="app">
 <div id="top"><div id="dots"><i class="a"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span id="lb">1/8</span><button id="mu">🔊</button></div>
 
-<section class="sc on" id="s1"><div class="dark-bg"></div><div class="g"><h1>Buat Selvi Cahya Lestari...</h1><p>ada surat spesial buatmu nich 💌</p></div>
+<section class="sc on" id="s1"><div class="g"><h1 style="font-size: 28px; white-space: nowrap;">Buat Selvi Cahya Lestari</h1><p>ada surat spesial buat kmu nich 💌</p></div>
 <div style="animation:fl 3s ease-in-out infinite;margin:20px 0"><div class="env" id="env"><div class="flap"></div><div class="hp">🫰</div><div class="envb"></div></div></div>
 <button class="btn" id="open">Wajib Buka Suratnya 💖</button></section>
 
-<section class="sc" id="s2"><div class="dark-bg" id="dark-overlay"></div><h2>Tiup Lilin🎂</h2>
-<svg class="cake" viewBox="0 0 300 280"><ellipse cx="150" cy="258" rx="135" ry="14" fill="#fff" opacity=".6"/><rect x="45" y="172" width="210" height="84" rx="18" fill="#fda4af"/><rect x="75" y="115" width="150" height="62" rx="16" fill="#FFE4E6" stroke="#D4AF37"/><path d="M45 192q26 22 52 0t52 0 52 0 52 0" stroke="#fff" stroke-width="10" fill="none"/>
-<text x="118" y="108" font-size="64" font-weight="700" fill="#D4AF37" text-anchor="middle" font-family="Poppins">2</text><text x="182" y="108" font-size="64" font-weight="700" fill="#D4AF37" text-anchor="middle" font-family="Poppins">3</text>
-<ellipse class="fl" cx="118" cy="38" rx="9" ry="15" fill="#fbbf24"/><ellipse class="fl" cx="182" cy="38" rx="9" ry="15" fill="#fbbf24"/></svg>
-<p id="t2" style="font-weight:600">Tap & tahan tombol untuk meniup 💨</p><div id="bar"><i></i></div><button class="btn" id="hold">Tahan untuk tiup 🌬️</button></section>
+<section class="sc" id="s2"><div class="dark-bg" id="dark-overlay"></div><h2 style="transform: translateY(30px);">Tiup Lilinnya</h2>
+<svg class="cake" viewBox="0 -60 300 340">
+  <defs>
+    <filter id="glow" x="-150%" y="-150%" width="400%" height="400%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <linearGradient id="cakeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fda4af"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="150" cy="258" rx="135" ry="14" fill="#000" opacity=".15"/>
+  <rect x="45" y="172" width="210" height="84" rx="18" fill="url(#cakeGrad)"/>
+  <path d="M45 192 Q65 215 85 192 Q105 215 125 192 Q145 215 165 192 Q185 215 205 192 Q225 215 245 192 Q255 205 255 172 L45 172 Z" fill="#FFE4E6"/>
+  <rect x="75" y="115" width="150" height="62" rx="16" fill="#fda4af"/>
+  <path d="M75 132 Q90 155 105 132 Q120 155 135 132 Q150 155 165 132 Q180 155 195 132 Q210 155 225 132 L225 115 L75 115 Z" fill="#fff"/>
+  <circle cx="100" cy="210" r="4" fill="#fbbf24"/><circle cx="150" cy="252" r="4" fill="#fff"/><circle cx="200" cy="205" r="4" fill="#fbbf24"/>
+<text x="150" y="242" font-size="18" fill="#fff" text-anchor="middle" font-family="'Great Vibes', cursive" font-weight="bold" transform="rotate(-3 150 242)" filter="drop-shadow(1px 2px 2px rgba(0,0,0,0.3))">Selvi Cahya Lestari</text>
+  <circle cx="120" cy="190" r="3" fill="#fff"/><circle cx="180" cy="195" r="3" fill="#fff"/>
+  <rect x="100" y="65" width="20" height="45" rx="4" fill="#fff" stroke="#D4AF37" stroke-width="2"/>
+  <text x="110" y="95" font-size="24" font-weight="700" fill="#be123c" text-anchor="middle" font-family="Poppins">2</text>
+  <rect x="180" y="65" width="20" height="45" rx="4" fill="#fff" stroke="#D4AF37" stroke-width="2"/>
+  <text x="190" y="95" font-size="24" font-weight="700" fill="#be123c" text-anchor="middle" font-family="Poppins">3</text>
+  <g class="fl"><path d="M110 50 Q122 20 110 5 Q98 20 110 50" fill="#fbbf24" filter="url(#glow)"/><path d="M110 40 Q116 22 110 15 Q104 22 110 40" fill="#fff"/></g>
+  <g class="fl"><path d="M190 50 Q202 20 190 5 Q178 20 190 50" fill="#fbbf24" filter="url(#glow)"/><path d="M190 40 Q196 22 190 15 Q184 22 190 40" fill="#fff"/></g>
+</svg>
+<p id="t2" style="font-weight:600">Tap & tahan tombol untuk meniup</p><div id="bar"><i></i></div><button class="btn" id="hold">Tahan untuk tiup 🌬️</button></section>
 
 <section class="sc" id="s3"><h2>Kenangan Kita 📸</h2><p>geser ⟷ lalu tap kartu untuk membalik</p>
 <div class="sw" id="sw"></div></section>
@@ -99,7 +126,7 @@ p{margin:0}.btn{min-height:52px;padding:0 26px;border:0;border-radius:32px;backg
 <div style="text-align:center"><button class="btn" id="rd" style="font-size:15px">Lanjut baca...</button></div></div></section>
 
 <section class="sc" id="s8"><h1 style="font-size:40px;color:var(--d)">Selamat Ulang Tahun ke-23, Selvi Cahya Lestari 💖</h1>
-<p style="font-weight:600; color:var(--d); margin-bottom:10px; font-size:14px;">Tap semua fotonya satu-satu ya! Ada kejutan kalau dibuka semua 🤫📸</p>
+<p style="font-weight:600; color:var(--d); margin-bottom:10px; font-size:14px;">Tap semua fotonya satu-satu ya 📸</p>
 <div class="grid" id="grid"></div>
 <div class="row" style="padding-bottom:20px"><button class="btn sm" id="b1">Putar Ulang</button><button class="btn sm" id="b2">Tabur Hati Lagi 💖</button><button class="btn sm" id="b3">Kirim ke WA ke aa</button><button class="btn sm" id="btn-gift" style="background:linear-gradient(135deg,#fbbf24,#d97706);box-shadow:0 4px 15px #d9770666">Buka Kado 🎁</button></div></section>
 
@@ -195,11 +222,15 @@ $('#open').onclick=function(){
   setTimeout(()=>go(1),2000);
 };
 // 2
-init[1]=()=>{ pg=0; $('#dark-overlay').style.opacity = 0.85; gsap.to('.fl',{scaleY:1.25,scaleX:.85,repeat:-1,yoyo:true,duration:.18,stagger:.07}); };
+init[1]=()=>{ 
+  pg=0; 
+  $('#dark-overlay').style.opacity = 0.85; 
+  gsap.killTweensOf('.fl');
+};
 let hd=false,pg=0,bl=false;const hb=$('#hold');hb.onpointerdown=()=>hd=true;['pointerup','pointerleave','pointercancel'].forEach(e=>hb.addEventListener(e,()=>hd=false));
 setInterval(()=>{if(bl||cur!=1)return;pg=Math.max(0,Math.min(1,pg+(hd?.035:-.04)));$('#bar i').style.width=pg*100+'%';$('#dark-overlay').style.opacity = Math.max(0, 0.85 - (pg * 0.85));gsap.set('.fl',{opacity:1-pg*.5});if(pg>=1){bl=true;gsap.to('.fl',{opacity:0,scale:0,duration:.4});big();$('#t2').textContent='yeeeyyy Happy Birthday cantiknnya aa';hb.style.display='none';unlock()}},50);
 // 3
-const CP=[['foto1','First date jalan kaki, tapi tetep happy soalnya sama my pacal botol aqua 300ml 🤭🤭'],['foto2','lutuuu kek kue putuu 😙'],['foto3','Cukup bayangan kita aja ya yang bayang²in pikiyan kamuhh, gaboyeh maca lalu yg bayang²in pikiyan you']];
+const CP=[['foto1','First date jalan kaki, tapi tetep happy soalnya sama my pacal botol yaqult 🤭🤭'],['foto2','lutuuu kek kue putuu 😙'],['foto3','Cukup bayangan kita aja ya yang bayang²in pikiyan kamuhh, gaboyeh maca lalu yg bayang²in pikiyan you']];
 $('#sw').innerHTML=CP.map(c=>`<div class="cd"><div class="in"><div class="fc"><img src="${IM[c[0]]}"></div><div class="bk">${c[1]}</div></div></div>`).join('');
 $$('.cd').forEach(c=>c.onclick=()=>c.classList.toggle('f'));init[2]=()=>setTimeout(unlock,1200);
 // 4
@@ -240,7 +271,7 @@ function spawn(){
   }
 }
 function gEnd(w){run=false;clearInterval(sp);clearInterval(gt);$$('.hh').forEach(h=>h.remove());if(w){$('#rv').style.display='flex';gsap.fromTo('#rv .ph',{scale:.2,rotation:-20},{scale:1,rotation:0,duration:1,ease:'back.out(1.7)'});big();setTimeout(big,900);unlock()}else{$('#gs').style.display='block';$('#gt').textContent='Yah, kurang! Coba lagi yuk 💪';$('#gst').textContent='Main Lagi'}}
-$('#gst').onclick=()=>{sc=0;tl=30;run=true;$('#gs').style.display='none';upd();sp=setInterval(spawn,380);gt=setInterval(()=>{tl--;upd();if(tl<=0)gEnd(false)},1000)};
+$('#gst').onclick=()=>{sc=0;tl=30;run=true;$('#gs').style.display='none';upd();sp=setInterval(spawn,550);gt=setInterval(()=>{tl--;upd();if(tl<=0)gEnd(false)},1000)};
 // 5
 let bg=false,bs=false;const ph=$('#ph');
 function setPh(k,s,p){ph.style.backgroundImage=`url(${IM[k]})`;ph.style.backgroundSize=s;ph.style.backgroundPosition=p}
@@ -332,7 +363,7 @@ window.checkQ=(btn,isCorrect)=>{
 $('#b3').onclick=()=>window.open('https://wa.me/?text='+encodeURIComponent('Makasih ya aa ku tercayank yang tamvan, baik hati, penyayang, penyabar, tidak sombong, rajin menabung, tidak cuka macem², dan pastinya tidack nackall, aku cayank banget sama kamuhhhh. Love you! 💖'),'_blank');
 
 setInterval(()=>{
-  if(document.hidden || cur < 2) return;
+  if(document.hidden || cur < 2 || run) return;
   let h = document.createElement('div');
   h.className='falling-heart';
   h.textContent = Math.random()>0.5?'💖':'✨';
