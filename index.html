@@ -211,7 +211,7 @@ init[1]=()=>{pg=0;$('#dark-overlay').style.opacity=.85};
 hb.onpointerdown=()=>hd=true;['pointerup','pointerleave','pointercancel'].forEach(e=>hb.addEventListener(e,()=>hd=false));
 hb.addEventListener('contextmenu',e=>e.preventDefault());
 setInterval(()=>{if(bl||cur!=1)return;pg=Math.max(0,Math.min(1,pg+(hd?.035:-.04)));$('#bar i').style.width=pg*100+'%';$('#dark-overlay').style.opacity=Math.max(0,.85-pg*.85);gsap.set('.fl',{opacity:1-pg*.5});
-  if(pg>=1){bl=true;vib([60,40,60]);gsap.to('.fl',{opacity:0,scale:0,duration:.4});big();$('#t2').textContent='yeeeyyy Happy Birthday cantiknnya aa';hb.style.display='none';unlock()}},50);
+  if(pg>=1){bl=true;vib([60,40,60]);gsap.to('.fl',{opacity:0,scale:0,duration:.4});big();$('#t2').textContent='yeeeyyy Happy Birthday cantiknnya aa';hb.style.visibility='hidden';unlock()}},50);
 
 // 3
 const CP=[['foto1','First date jalan kaki, tapi tetep happy soalnya sama my pacal botol yaqult 🤭🤭'],['foto2','lutuuu kek kue putuu 😙'],['foto3','Cukup bayangan kita aja ya yang bayang²in pikiyan kamuhh, gaboyeh maca lalu yg bayang²in pikiyan you']];
