@@ -2,7 +2,7 @@
 <html lang="id"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#14071a">
-<title>Surat cinta untuk Selvi 💖</title>
+<title>Surat Cinta untuk Selvi 💖</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,500;1,600&family=Figtree:wght@400;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.6.0/confetti.browser.min.js"></script>
@@ -160,7 +160,7 @@ h1,h2{font-family:Fraunces,serif;font-style:italic;font-weight:500;margin:0;font
 <div class="row" style="padding-bottom:20px"><button class="btn sm" id="b1">Putar Ulang</button><button class="btn sm" id="b2">Tabur Hati Lagi 💖</button><button class="btn sm" id="b3">Kirim ke WA ke aa</button><button class="btn sm gold" id="btn-gift">Buka Kado 🎁</button></div></section>
 
 <button class="btn" id="nx">Lanjut 💖</button>
-<div id="quiz"><h2>Kuis Duyuu! 😜</h2><p class="sub" style="margin-bottom:10px">Siapa yang paling sering ngambek?</p><button class="q-btn" onclick="checkQ(this)">Aku (Selvi)</button><button class="q-btn" onclick="checkQ(this)">Kamu (Aa)</button><button class="q-btn" onclick="checkQ(this,'1')">Kucing 🐱</button><div id="q-res" style="margin-top:15px;font-weight:600;font-size:14px;min-height:24px"></div></div>
+<div id="quiz"><h2>Nanya Dongg! 😜</h2><p class="sub" style="margin-bottom:10px">Siapa yang paling sering ngambek?</p><button class="q-btn" onclick="checkQ(this)">Aku (Selvi)</button><button class="q-btn" onclick="checkQ(this)">Kamu (Aa)</button><button class="q-btn" onclick="checkQ(this,'1')">Kucing 🐱</button><div id="q-res" style="margin-top:15px;font-weight:600;font-size:14px;min-height:24px"></div></div>
 <div id="gift"><button class="close-btn" id="gx">✕</button><h2>Kado Spesial 🎁</h2><div class="gift-box" id="gift-box" onclick="openGift()">🎁</div><div id="gift-secret">Taraaa! 🎉<br>Kadonya prank, hehe gak kok canda, hadiahnya voucher make a wish atau permintaan yang harus dilakuin aa seharian penuh 🤭🤭 <br>Tagih aja kapanpun kmu mau yakk tapi sekaliiiiii 😉💖</div></div>
 <div id="zm"><button class="close-btn" id="zx">✕</button><img id="zi"><p id="zc"></p><div class="zn"><button id="zp">‹</button><span id="zk"></span><button id="zq">›</button></div></div>
 <div id="sec"><p>Beb, kamu akan selalu jadi wanita favorit aku 💖</p><small>tap untuk menutup</small></div>
@@ -312,7 +312,7 @@ window.openGift=()=>{const g=$('#gift-box');if(g.classList.contains('open'))retu
   gsap.to(g,{rotation:15,yoyo:true,repeat:5,duration:.1,onComplete:()=>{g.textContent='💥';
     gsap.to(g,{scale:0,opacity:0,duration:.3,onComplete:()=>{$('#gift-secret').style.display='block';gsap.from('#gift-secret',{scale:.5,opacity:0,duration:.6,ease:'back.out(1.5)'});hc();big()}})}})};
 window.checkQ=(btn,ok)=>{const res=$('#q-res');
-  if(ok){btn.style.background='#22c55e';btn.style.borderColor='#22c55e';res.style.color='#4ade80';res.textContent='Bener banget! Kucing emang hobi ngambek kaya youu 😹';
+  if(ok){btn.style.background='#22c55e';btn.style.borderColor='#22c55e';res.style.color='#4ade80';res.textContent='Betulll! Kucing emang hobinya ngambek kaya youu 😹';
     $$('.q-btn').forEach(b=>b.disabled=true);setTimeout(()=>{$('#quiz').dataset.done='1';$('#quiz').style.display='none';go(7)},1500)}
   else{btn.style.background='#ef4444';btn.style.borderColor='#ef4444';res.style.color='#f87171';vib(60);
     res.textContent=btn.textContent.includes('Selvi')?'Kok tumben ngaku, hemmm mencurigakan 🤔🤔':'Ga mungkin lah, Aa kan penyabar 😎';
